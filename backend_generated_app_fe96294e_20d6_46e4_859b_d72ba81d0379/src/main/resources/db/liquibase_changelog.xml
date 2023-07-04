@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <property name="schemaName" value="generated_app"></property>
+    <property name="author=" value="db-designer"></property>
+    <changeSet id="v1-01-01" author="${author}">
+    
+ <createTable schemaName="${schemaName}" tableName="PackageManagement">
+	<column name="Id" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="User">
+    <column name="UserName" type="VARCHAR(250)" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Server">
+	<column name="Id" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="BETechnology">
+	<column name="BeTechId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="TechName" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+     <column name="Version" type="VARCHAR(250)" />
+    
+  	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Document">
+	<column name="DocId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="FileType" type="VARCHAR(250)" />
+    
+     <column name="FileName" type="VARCHAR(250)" />
+    
+ 	<column name="Content" type="BINARY"/>
+	<column name="DocFileType" type="VARCHAR(100)"/>
+	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="BackendApp">
+	<column name="AppId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+  	<column name="AppDetails_AppName" type="VARCHAR(250)"/>
+	<column name="AppDetails_AppDescription" type="VARCHAR(250)"/>
+	<column name="AppDetails_Namespace" type="VARCHAR(250)"/>
+	<column name="AppDetails_PackageManagement" type="VARCHAR(250)"/>
+	<column name="AppDetails_BuildTool" type="VARCHAR(250)"/>
+	<column name="AppDetails_Server" type="VARCHAR(250)"/>
+	<column name="AppDetails_Architecture" type="VARCHAR(250)"/>
+     <column name="DbSchemaName" type="VARCHAR(250)" />
+    
+  	<column name="Advanced_CorsStatus" type="BOOLEAN"/>
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Industry">
+	<column name="IndustryId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+ 	<column name="IndustryName" type="INTEGER" />
+   
+     <column name="Icon" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ScreenFeature">
+	<column name="ScreenFeatureId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ScreenFeatureName" type="VARCHAR(250)" />
+    
+     <column name="FeatureDescription" type="VARCHAR(250)" />
+    
+     <column name="FeatureExplanation" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="UITemplate">
+	<column name="TemplateId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="TemplateName" type="VARCHAR(250)" />
+    
+     <column name="TemplateDescription" type="VARCHAR(250)" />
+    
+     <column name="DevelopedBy" type="VARCHAR(250)" />
+    
+     <column name="WebsiteReference" type="VARCHAR(250)" />
+    
+     <column name="RepoName" type="VARCHAR(250)" />
+    
+     <column name="RepoURL" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="SiteMap">
+	<column name="SiteMapId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Database">
+	<column name="DbId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Dbname" type="VARCHAR(250)" />
+    
+     <column name="Dbversion" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="FETechnology">
+	<column name="FeTechId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+     <column name="Version" type="VARCHAR(250)" />
+    
+  	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="FrontendApp">
+	<column name="AppId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+  	<column name="ProjectDetails_AppName" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_AppDescription" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_Namespace" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_PackageManagement" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_BuildTool" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_Server" type="VARCHAR(250)"/>
+	<column name="ProjectDetails_Architecture" type="VARCHAR(250)"/>
+      <column name="Documentation" type="VARCHAR(250)" />
+    
+  	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Architecture">
+	<column name="Id" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Capability">
+	<column name="CapabilityId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+     <column name="Sample_data" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="FECapability">
+	<column name="CapabilityId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Setting">
+	<column name="SettingsId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="UserName" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="BackendTemplate">
+	<column name="TemplateId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="TemplateName" type="VARCHAR(250)" />
+    
+     <column name="TemplateDescription" type="VARCHAR(250)" />
+    
+     <column name="RepoURL" type="VARCHAR(250)" />
+    
+     <column name="RepoName" type="VARCHAR(250)" />
+    
+     <column name="TemplatePath" type="VARCHAR(250)" />
+    
+     <column name="GitHubURL" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ScreenFlow">
+	<column name="ScreenFlowId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Project">
+	<column name="ProjectId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ProjectName" type="VARCHAR(250)" />
+    
+     <column name="Version" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="CustomerName" type="VARCHAR(250)" />
+    
+     <column name="StartDate" type="TIMESTAMP" />
+    
+     <column name="EndDate" type="TIMESTAMP" />
+    
+     <column name="CustomerAccountName" type="VARCHAR(250)" />
+    
+     <column name="ProjectLogo" type="BINARY" />
+    
+     <column name="UserName" type="VARCHAR(250)" />
+    
+     <column name="GitHubURL" type="VARCHAR(250)" />
+    
+     <column name="RepositoryName" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="FrontendScreen">
+	<column name="FeScreenId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ScreenName" type="VARCHAR(250)" />
+    
+     <column name="ScreenDescription" type="VARCHAR(250)" />
+    
+     <column name="Documentation" type="VARCHAR(250)" />
+    
+     <column name="ScreenLayout" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ModelFile">
+	<column name="ModelId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ModelName" type="VARCHAR(250)" />
+    
+     <column name="ModelDescription" type="VARCHAR(250)" />
+    
+     <column name="Path" type="VARCHAR(250)" />
+    
+ 	<column name="ModelType" type="INTEGER" />
+   
+ 	<column name="CreatedBy" type="INTEGER" />
+   
+     <column name="IconPath" type="VARCHAR(250)" />
+    
+     <column name="UserName" type="VARCHAR(250)" />
+    
+     <column name="ModelFileName" type="VARCHAR(250)" />
+    
+     <column name="ModelFileVersion" type="VARCHAR(250)" />
+    
+     <column name="Version" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="BuildTool">
+	<column name="Id" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="BECapability">
+	<column name="CapabilityId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Icon" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Theme">
+	<column name="ThemeId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Themename" type="VARCHAR(250)" />
+    
+     <column name="Themedescription" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ReviewRequest">
+	<column name="Id" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Date" type="TIMESTAMP" />
+    
+ 	<column name="ReviewType" type="INTEGER" />
+   
+     <column name="ReviewRequestNotes" type="VARCHAR(250)" />
+    
+ 	<column name="ApprovalState" type="INTEGER" />
+   
+     <column name="ApprovalNotes" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Generator">
+	<column name="GenId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Description" type="VARCHAR(250)" />
+    
+     <column name="Documentation" type="VARCHAR(250)" />
+    
+     <column name="Sample_data" type="VARCHAR(250)" />
+    
+     <column name="RepoName" type="VARCHAR(250)" />
+    
+     <column name="RepoURL" type="VARCHAR(250)" />
+    
+     <column name="DateOfCreation" type="TIMESTAMP" />
+    
+ 	<column name="IsApproved" type="INTEGER" />
+   
+     <column name="CreatedBy" type="VARCHAR(250)" />
+    
+     <column name="JarFileName" type="VARCHAR(250)" />
+    
+     <column name="JarFileDirectory" type="VARCHAR(250)" />
+    
+     <column name="GitHubURL" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="GitHubCreds">
+	<column name="GitHubCredId" type="BIGINT" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="UserName" type="VARCHAR(250)" />
+    
+     <column name="Pwd" type="VARCHAR(250)" />
+    
+     <column name="Pat" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+	
+  <createTable schemaName="${schemaName}" tableName="FrontendAppCapabilities">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AppId" type="BIGINT" />
+	<column name="CapabilityId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="FrontendAppSelectedScreens">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AppId" type="BIGINT" />
+	<column name="FeScreenId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="BETechnologyBeTechnologyFeatures">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="BeTechId" type="INTEGER" />
+	<column name="BeTechnologyFeatures" type="VARCHAR(250)" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="FrontendAppMetaTags">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AppId" type="BIGINT" />
+	<column name="MetaTags" type="VARCHAR(250)" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="UITemplateSupported_Capabilities">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="TemplateId" type="INTEGER" />
+	<column name="CapabilityId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="BackendAppCapabilities">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AppId" type="BIGINT" />
+	<column name="CapabilityId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="FETechnologyFeTechnologyFeatures">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="FeTechId" type="INTEGER" />
+	<column name="FeTechnologyFeatures" type="VARCHAR(250)" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="SettingGitHubAccounts">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="SettingsId" type="INTEGER" />
+	<column name="GitHubCredId" type="BIGINT" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="UITemplateAllScreens">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="TemplateId" type="INTEGER" />
+	<column name="FeScreenId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="FrontendAppSelectedScreenIds">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AppId" type="BIGINT" />
+	<column name="SelectedScreenIds" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="BackendTemplateSupported_Capabilities">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="TemplateId" type="INTEGER" />
+	<column name="CapabilityId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="ScreenFlowFlow">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="ScreenFlowId" type="INTEGER" />
+	<column name="FeScreenId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="SiteMapFlows">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="SiteMapId" type="BIGINT" />
+	<column name="ScreenFlowId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="FrontendScreenFeatures">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="FeScreenId" type="INTEGER" />
+	<column name="ScreenFeatureId" type="INTEGER" />
+</createTable>
+
+ 	<addForeignKeyConstraint baseTableName="FrontendAppCapabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="AppId" constraintName="FECapability_AppId_fk"
+	                                  referencedTableName="FrontendApp" referencedTableSchemaName="${schemaName}" referencedColumnNames="AppId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="FrontendAppCapabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="CapabilityId" constraintName="FECapability_CapabilityId_fk"
+	                                  referencedTableName="FECapability" referencedTableSchemaName="${schemaName}" referencedColumnNames="CapabilityId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="FrontendAppSelectedScreens" baseTableSchemaName="${schemaName}"  baseColumnNames="AppId" constraintName="FrontendScreen_AppId_fk"
+	                                  referencedTableName="FrontendApp" referencedTableSchemaName="${schemaName}" referencedColumnNames="AppId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="FrontendAppSelectedScreens" baseTableSchemaName="${schemaName}"  baseColumnNames="FeScreenId" constraintName="FrontendScreen_FeScreenId_fk"
+	                                  referencedTableName="FrontendScreen" referencedTableSchemaName="${schemaName}" referencedColumnNames="FeScreenId"/>
+ 
+ 	<addForeignKeyConstraint baseTableSchemaName="${schemaName}" baseTableName="BETechnologyBeTechnologyFeatures" baseColumnNames="BeTechId" constraintName="BETechnology_BETechnologyBeTechnologyFeatures_fk" referencedTableName="BETechnology"
+                                 	referencedColumnNames="BeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+ 	<addForeignKeyConstraint baseTableSchemaName="${schemaName}" baseTableName="FrontendAppMetaTags" baseColumnNames="AppId" constraintName="FrontendApp_FrontendAppMetaTags_fk" referencedTableName="FrontendApp"
+                                 	referencedColumnNames="AppId" referencedTableSchemaName="${schemaName}"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="UITemplateSupported_Capabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="TemplateId" constraintName="Capability_TemplateId_fk"
+	                                  referencedTableName="UITemplate" referencedTableSchemaName="${schemaName}" referencedColumnNames="TemplateId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="UITemplateSupported_Capabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="CapabilityId" constraintName="Capability_CapabilityId_fk"
+	                                  referencedTableName="Capability" referencedTableSchemaName="${schemaName}" referencedColumnNames="CapabilityId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="BackendAppCapabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="AppId" constraintName="BECapability_AppId_fk"
+	                                  referencedTableName="BackendApp" referencedTableSchemaName="${schemaName}" referencedColumnNames="AppId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="BackendAppCapabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="CapabilityId" constraintName="BECapability_CapabilityId_fk"
+	                                  referencedTableName="BECapability" referencedTableSchemaName="${schemaName}" referencedColumnNames="CapabilityId"/>
+ 
+ 	<addForeignKeyConstraint baseTableSchemaName="${schemaName}" baseTableName="FETechnologyFeTechnologyFeatures" baseColumnNames="FeTechId" constraintName="FETechnology_FETechnologyFeTechnologyFeatures_fk" referencedTableName="FETechnology"
+                                 	referencedColumnNames="FeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="SettingGitHubAccounts" baseTableSchemaName="${schemaName}"  baseColumnNames="SettingsId" constraintName="GitHubCreds_SettingsId_fk"
+	                                  referencedTableName="Setting" referencedTableSchemaName="${schemaName}" referencedColumnNames="SettingsId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="SettingGitHubAccounts" baseTableSchemaName="${schemaName}"  baseColumnNames="GitHubCredId" constraintName="GitHubCreds_GitHubCredId_fk"
+	                                  referencedTableName="GitHubCreds" referencedTableSchemaName="${schemaName}" referencedColumnNames="GitHubCredId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="UITemplateAllScreens" baseTableSchemaName="${schemaName}"  baseColumnNames="TemplateId" constraintName="FrontendScreen_TemplateId_fk"
+	                                  referencedTableName="UITemplate" referencedTableSchemaName="${schemaName}" referencedColumnNames="TemplateId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="UITemplateAllScreens" baseTableSchemaName="${schemaName}"  baseColumnNames="FeScreenId" constraintName="FrontendScreen_FeScreenId_fk"
+	                                  referencedTableName="FrontendScreen" referencedTableSchemaName="${schemaName}" referencedColumnNames="FeScreenId"/>
+ 
+ 	<addForeignKeyConstraint baseTableSchemaName="${schemaName}" baseTableName="FrontendAppSelectedScreenIds" baseColumnNames="AppId" constraintName="FrontendApp_FrontendAppSelectedScreenIds_fk" referencedTableName="FrontendApp"
+                                 	referencedColumnNames="AppId" referencedTableSchemaName="${schemaName}"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="BackendTemplateSupported_Capabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="TemplateId" constraintName="Capability_TemplateId_fk"
+	                                  referencedTableName="BackendTemplate" referencedTableSchemaName="${schemaName}" referencedColumnNames="TemplateId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="BackendTemplateSupported_Capabilities" baseTableSchemaName="${schemaName}"  baseColumnNames="CapabilityId" constraintName="Capability_CapabilityId_fk"
+	                                  referencedTableName="Capability" referencedTableSchemaName="${schemaName}" referencedColumnNames="CapabilityId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="ScreenFlowFlow" baseTableSchemaName="${schemaName}"  baseColumnNames="ScreenFlowId" constraintName="FrontendScreen_ScreenFlowId_fk"
+	                                  referencedTableName="ScreenFlow" referencedTableSchemaName="${schemaName}" referencedColumnNames="ScreenFlowId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="ScreenFlowFlow" baseTableSchemaName="${schemaName}"  baseColumnNames="FeScreenId" constraintName="FrontendScreen_FeScreenId_fk"
+	                                  referencedTableName="FrontendScreen" referencedTableSchemaName="${schemaName}" referencedColumnNames="FeScreenId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="SiteMapFlows" baseTableSchemaName="${schemaName}"  baseColumnNames="SiteMapId" constraintName="ScreenFlow_SiteMapId_fk"
+	                                  referencedTableName="SiteMap" referencedTableSchemaName="${schemaName}" referencedColumnNames="SiteMapId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="SiteMapFlows" baseTableSchemaName="${schemaName}"  baseColumnNames="ScreenFlowId" constraintName="ScreenFlow_ScreenFlowId_fk"
+	                                  referencedTableName="ScreenFlow" referencedTableSchemaName="${schemaName}" referencedColumnNames="ScreenFlowId"/>
+ 
+ 	<addForeignKeyConstraint baseTableName="FrontendScreenFeatures" baseTableSchemaName="${schemaName}"  baseColumnNames="FeScreenId" constraintName="ScreenFeature_FeScreenId_fk"
+	                                  referencedTableName="FrontendScreen" referencedTableSchemaName="${schemaName}" referencedColumnNames="FeScreenId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="FrontendScreenFeatures" baseTableSchemaName="${schemaName}"  baseColumnNames="ScreenFeatureId" constraintName="ScreenFeature_ScreenFeatureId_fk"
+	                                  referencedTableName="ScreenFeature" referencedTableSchemaName="${schemaName}" referencedColumnNames="ScreenFeatureId"/>
+ 
+	
+ 
+ 
+ 
+ 
+ 
+ 	<addColumn tableName="BackendApp" schemaName="${schemaName}">
+	    <column name="BackendAppModel" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendApp" baseColumnNames="BackendAppModel" baseTableSchemaName="${schemaName}" constraintName="BackendApp_Model_fk" referencedTableName="ModelFile"
+	                                 referencedColumnNames="ModelId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="BackendApp" schemaName="${schemaName}">
+	    <column name="BackendAppDatabase" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendApp" baseColumnNames="BackendAppDatabase" baseTableSchemaName="${schemaName}" constraintName="BackendApp_Database_fk" referencedTableName="Database"
+	                                 referencedColumnNames="DbId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="BackendApp" schemaName="${schemaName}">
+	    <column name="BackendAppMainTechnology" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendApp" baseColumnNames="BackendAppMainTechnology" baseTableSchemaName="${schemaName}" constraintName="BackendApp_MainTechnology_fk" referencedTableName="BETechnology"
+	                                 referencedColumnNames="BeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="BackendApp" schemaName="${schemaName}">
+	    <column name="BackendAppTemplate" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendApp" baseColumnNames="BackendAppTemplate" baseTableSchemaName="${schemaName}" constraintName="BackendApp_Template_fk" referencedTableName="BackendTemplate"
+	                                 referencedColumnNames="TemplateId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 
+ 
+ 	<addColumn tableName="UITemplate" schemaName="${schemaName}">
+	    <column name="UITemplateTheme" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="UITemplate" baseColumnNames="UITemplateTheme" baseTableSchemaName="${schemaName}" constraintName="UITemplate_Theme_fk" referencedTableName="Theme"
+	                                 referencedColumnNames="ThemeId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="UITemplate" schemaName="${schemaName}">
+	    <column name="UITemplateMainTechnology" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="UITemplate" baseColumnNames="UITemplateMainTechnology" baseTableSchemaName="${schemaName}" constraintName="UITemplate_MainTechnology_fk" referencedTableName="FETechnology"
+	                                 referencedColumnNames="FeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="UITemplate" schemaName="${schemaName}">
+	    <column name="UITemplateSupported_BETechnology" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="UITemplate" baseColumnNames="UITemplateSupported_BETechnology" baseTableSchemaName="${schemaName}" constraintName="UITemplate_Supported_BETechnology_fk" referencedTableName="BETechnology"
+	                                 referencedColumnNames="BeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="UITemplate" schemaName="${schemaName}">
+	    <column name="UITemplateGenerator" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="UITemplate" baseColumnNames="UITemplateGenerator" baseTableSchemaName="${schemaName}" constraintName="UITemplate_Generator_fk" referencedTableName="Generator"
+	                                 referencedColumnNames="GenId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 
+ 
+ 
+ 	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppModel" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppModel" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_Model_fk" referencedTableName="ModelFile"
+	                                 referencedColumnNames="ModelId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppMainTechnology" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppMainTechnology" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_MainTechnology_fk" referencedTableName="FETechnology"
+	                                 referencedColumnNames="FeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppSiteMap" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppSiteMap" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_SiteMap_fk" referencedTableName="SiteMap"
+	                                 referencedColumnNames="SiteMapId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppTheme" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppTheme" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_Theme_fk" referencedTableName="Theme"
+	                                 referencedColumnNames="ThemeId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppTemplate" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppTemplate" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_Template_fk" referencedTableName="UITemplate"
+	                                 referencedColumnNames="TemplateId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendApp" schemaName="${schemaName}">
+	    <column name="FrontendAppDependency" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendApp" baseColumnNames="FrontendAppDependency" baseTableSchemaName="${schemaName}" constraintName="FrontendApp_Dependency_fk" referencedTableName="BackendApp"
+	                                 referencedColumnNames="AppId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 
+ 
+ 
+ 
+ 	<addColumn tableName="BackendTemplate" schemaName="${schemaName}">
+	    <column name="BackendTemplateMainTechnology" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendTemplate" baseColumnNames="BackendTemplateMainTechnology" baseTableSchemaName="${schemaName}" constraintName="BackendTemplate_MainTechnology_fk" referencedTableName="BETechnology"
+	                                 referencedColumnNames="BeTechId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="BackendTemplate" schemaName="${schemaName}">
+	    <column name="BackendTemplateSupported_Database" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendTemplate" baseColumnNames="BackendTemplateSupported_Database" baseTableSchemaName="${schemaName}" constraintName="BackendTemplate_Supported_Database_fk" referencedTableName="Database"
+	                                 referencedColumnNames="DbId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="BackendTemplate" schemaName="${schemaName}">
+	    <column name="BackendTemplateGenerator" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="BackendTemplate" baseColumnNames="BackendTemplateGenerator" baseTableSchemaName="${schemaName}" constraintName="BackendTemplate_Generator_fk" referencedTableName="Generator"
+	                                 referencedColumnNames="GenId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 
+ 	<addColumn tableName="Project" schemaName="${schemaName}">
+	    <column name="ProjectBackendApp" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Project" baseColumnNames="ProjectBackendApp" baseTableSchemaName="${schemaName}" constraintName="Project_BackendApp_fk" referencedTableName="BackendApp"
+	                                 referencedColumnNames="AppId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="Project" schemaName="${schemaName}">
+	    <column name="ProjectFrontendApp" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Project" baseColumnNames="ProjectFrontendApp" baseTableSchemaName="${schemaName}" constraintName="Project_FrontendApp_fk" referencedTableName="FrontendApp"
+	                                 referencedColumnNames="AppId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="Project" schemaName="${schemaName}">
+	    <column name="ProjectGitHubCred" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Project" baseColumnNames="ProjectGitHubCred" baseTableSchemaName="${schemaName}" constraintName="Project_GitHubCred_fk" referencedTableName="GitHubCreds"
+	                                 referencedColumnNames="GitHubCredId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 	<addColumn tableName="FrontendScreen" schemaName="${schemaName}">
+	    <column name="FrontendScreenScreenshotBig" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendScreen" baseColumnNames="FrontendScreenScreenshotBig" baseTableSchemaName="${schemaName}" constraintName="FrontendScreen_ScreenshotBig_fk" referencedTableName="Document"
+	                                 referencedColumnNames="DocId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="FrontendScreen" schemaName="${schemaName}">
+	    <column name="FrontendScreenScreenshotSmall" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="FrontendScreen" baseColumnNames="FrontendScreenScreenshotSmall" baseTableSchemaName="${schemaName}" constraintName="FrontendScreen_ScreenshotSmall_fk" referencedTableName="Document"
+	                                 referencedColumnNames="DocId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 	<addColumn tableName="ModelFile" schemaName="${schemaName}">
+	    <column name="ModelFileIndustry" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="ModelFile" baseColumnNames="ModelFileIndustry" baseTableSchemaName="${schemaName}" constraintName="ModelFile_Industry_fk" referencedTableName="Industry"
+	                                 referencedColumnNames="IndustryId" referencedTableSchemaName="${schemaName}"/>
+ 
+	<addColumn tableName="ModelFile" schemaName="${schemaName}">
+	    <column name="ModelFileFile" type="BIGINT"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="ModelFile" baseColumnNames="ModelFileFile" baseTableSchemaName="${schemaName}" constraintName="ModelFile_File_fk" referencedTableName="Document"
+	                                 referencedColumnNames="DocId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+	    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Model">
+            <EntityType HasStream="true" Name="Document">
+                <Key>
+                    <PropertyRef Name="DocId"/>
+                </Key>
+                <Property Name="DocId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="FileType" Type="Edm.String" isUnique="false"/>
+                <Property Name="FileName" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="BackendTemplate">
+                <Key>
+                    <PropertyRef Name="TemplateId"/>
+                </Key>
+                <Property Name="TemplateId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="TemplateName" Type="Edm.String" isUnique="true"/>
+                <Property Name="TemplateDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoURL" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoName" Type="Edm.String" isUnique="false"/>
+                <Property Name="TemplatePath" Type="Edm.String" isUnique="false"/>
+                <Property Name="GitHubURL" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="MainTechnology" Type="Model.BETechnology"/>
+                <NavigationProperty Name="Supported_Capabilities" Type="Collection(Model.Capability)"/>
+                <NavigationProperty Name="Supported_Database" Type="Model.Database"/>
+                <NavigationProperty Name="Generator" Type="Model.Generator"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="BECapability">
+                <Key>
+                    <PropertyRef Name="CapabilityId"/>
+                </Key>
+                <Property Name="CapabilityId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Architecture">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Capability">
+                <Key>
+                    <PropertyRef Name="CapabilityId"/>
+                </Key>
+                <Property Name="CapabilityId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+                <Property Name="Sample_data" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Server">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ScreenFlow">
+                <Key>
+                    <PropertyRef Name="ScreenFlowId"/>
+                </Key>
+                <Property Name="ScreenFlowId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="Flow" Type="Collection(Model.FrontendScreen)"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="FETechnology">
+                <Key>
+                    <PropertyRef Name="FeTechId"/>
+                </Key>
+                <Property Name="FeTechId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+                <Property Name="Version" Type="Edm.String" isUnique="false"/>
+                <Property Name="FeTechnologyFeatures" Type="Collection(Edm.String)" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ScreenFeature">
+                <Key>
+                    <PropertyRef Name="ScreenFeatureId"/>
+                </Key>
+                <Property Name="ScreenFeatureId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="ScreenFeatureName" Type="Edm.String" isUnique="false"/>
+                <Property Name="FeatureDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="FeatureExplanation" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="FrontendScreen">
+                <Key>
+                    <PropertyRef Name="FeScreenId"/>
+                </Key>
+                <Property Name="FeScreenId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="ScreenName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ScreenDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="Documentation" Type="Edm.String" isUnique="false"/>
+                <Property Name="ScreenLayout" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="Features" Type="Collection(Model.ScreenFeature)"/>
+                <NavigationProperty Name="ScreenshotBig" Type="Model.Document"/>
+                <NavigationProperty Name="ScreenshotSmall" Type="Model.Document"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="BackendApp">
+                <Key>
+                    <PropertyRef Name="AppId"/>
+                </Key>
+                <Property Name="AppId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="AppDetails" Type="Model.BasicDetails" isUnique="false"/>
+                <Property Name="DbSchemaName" Type="Edm.String" isUnique="false"/>
+                <Property Name="Advanced" Type="Model.AdvancedDetails" isUnique="false"/>
+                <NavigationProperty Name="Model" Type="Model.ModelFile"/>
+                <NavigationProperty Name="Database" Type="Model.Database"/>
+                <NavigationProperty Name="MainTechnology" Type="Model.BETechnology"/>
+                <NavigationProperty Name="Capabilities" Type="Collection(Model.BECapability)"/>
+                <NavigationProperty Name="Template" Type="Model.BackendTemplate"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ReviewRequest">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="Date" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="ReviewType" Type="Model.ReviewType" isUnique="false"/>
+                <Property Name="ReviewRequestNotes" Type="Edm.String" isUnique="false"/>
+                <Property Name="ApprovalState" Type="Model.ApprovalState" isUnique="false"/>
+                <Property Name="ApprovalNotes" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Project">
+                <Key>
+                    <PropertyRef Name="ProjectId"/>
+                </Key>
+                <Property Name="ProjectId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="ProjectName" Type="Edm.String" isUnique="false"/>
+                <Property Name="Version" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="CustomerName" Type="Edm.String" isUnique="false"/>
+                <Property Name="StartDate" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="EndDate" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="CustomerAccountName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ProjectLogo" Type="Edm.Binary" isUnique="false"/>
+                <Property Name="UserName" Type="Edm.String" isUnique="true"/>
+                <Property Name="GitHubURL" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepositoryName" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="BackendApp" Type="Model.BackendApp"/>
+                <NavigationProperty Name="FrontendApp" Type="Model.FrontendApp"/>
+                <NavigationProperty Name="GitHubCred" Type="Model.GitHubCreds"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ModelFile">
+                <Key>
+                    <PropertyRef Name="ModelId"/>
+                </Key>
+                <Property Name="ModelId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="ModelName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ModelDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="Path" Type="Edm.String" isUnique="false"/>
+                <Property Name="ModelType" Type="Model.ModelType" isUnique="false"/>
+                <Property Name="CreatedBy" Type="Model.ModelCreator" isUnique="false"/>
+                <Property Name="IconPath" Type="Edm.String" isUnique="false"/>
+                <Property Name="UserName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ModelFileName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ModelFileVersion" Type="Edm.String" isUnique="false"/>
+                <Property Name="Version" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="Industry" Type="Model.Industry"/>
+                <NavigationProperty Name="File" Type="Model.Document"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Theme">
+                <Key>
+                    <PropertyRef Name="ThemeId"/>
+                </Key>
+                <Property Name="ThemeId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Themename" Type="Edm.String" isUnique="false"/>
+                <Property Name="Themedescription" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Setting">
+                <Key>
+                    <PropertyRef Name="SettingsId"/>
+                </Key>
+                <Property Name="SettingsId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="UserName" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="GitHubAccounts" Type="Collection(Model.GitHubCreds)"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="BETechnology">
+                <Key>
+                    <PropertyRef Name="BeTechId"/>
+                </Key>
+                <Property Name="BeTechId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="TechName" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+                <Property Name="Version" Type="Edm.String" isUnique="false"/>
+                <Property Name="BeTechnologyFeatures" Type="Collection(Edm.String)" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="UITemplate">
+                <Key>
+                    <PropertyRef Name="TemplateId"/>
+                </Key>
+                <Property Name="TemplateId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="TemplateName" Type="Edm.String" isUnique="true"/>
+                <Property Name="TemplateDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="DevelopedBy" Type="Edm.String" isUnique="false"/>
+                <Property Name="WebsiteReference" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoName" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoURL" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="Theme" Type="Model.Theme"/>
+                <NavigationProperty Name="AllScreens" Type="Collection(Model.FrontendScreen)"/>
+                <NavigationProperty Name="MainTechnology" Type="Model.FETechnology"/>
+                <NavigationProperty Name="Supported_BETechnology" Type="Model.BETechnology"/>
+                <NavigationProperty Name="Supported_Capabilities" Type="Collection(Model.Capability)"/>
+                <NavigationProperty Name="Generator" Type="Model.Generator"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Generator">
+                <Key>
+                    <PropertyRef Name="GenId"/>
+                </Key>
+                <Property Name="GenId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="true"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Documentation" Type="Edm.String" isUnique="false"/>
+                <Property Name="Sample_data" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoName" Type="Edm.String" isUnique="false"/>
+                <Property Name="RepoURL" Type="Edm.String" isUnique="false"/>
+                <Property Name="DateOfCreation" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="IsApproved" Type="Model.ApprovalState" isUnique="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" isUnique="false"/>
+                <Property Name="JarFileName" Type="Edm.String" isUnique="false"/>
+                <Property Name="JarFileDirectory" Type="Edm.String" isUnique="false"/>
+                <Property Name="GitHubURL" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="FECapability">
+                <Key>
+                    <PropertyRef Name="CapabilityId"/>
+                </Key>
+                <Property Name="CapabilityId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Industry">
+                <Key>
+                    <PropertyRef Name="IndustryId"/>
+                </Key>
+                <Property Name="IndustryId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="IndustryName" Type="Model.IndustryType" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="User">
+                <Key>
+                    <PropertyRef Name="UserName"/>
+                </Key>
+                <Property Name="UserName" Type="Edm.String" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="SiteMap">
+                <Key>
+                    <PropertyRef Name="SiteMapId"/>
+                </Key>
+                <Property Name="SiteMapId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="Flows" Type="Collection(Model.ScreenFlow)"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="GitHubCreds">
+                <Key>
+                    <PropertyRef Name="GitHubCredId"/>
+                </Key>
+                <Property Name="GitHubCredId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="UserName" Type="Edm.String" isUnique="false"/>
+                <Property Name="Pwd" Type="Edm.String" isUnique="false"/>
+                <Property Name="Pat" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="BuildTool">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Database">
+                <Key>
+                    <PropertyRef Name="DbId"/>
+                </Key>
+                <Property Name="DbId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Dbname" Type="Edm.String" isUnique="false"/>
+                <Property Name="Dbversion" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Icon" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="FrontendApp">
+                <Key>
+                    <PropertyRef Name="AppId"/>
+                </Key>
+                <Property Name="AppId" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="ProjectDetails" Type="Model.BasicDetails" isUnique="false"/>
+                <Property Name="MetaTags" Type="Collection(Edm.String)" isUnique="false"/>
+                <Property Name="Documentation" Type="Edm.String" isUnique="false"/>
+                <Property Name="SelectedScreenIds" Type="Collection(Edm.Int32)" isUnique="false"/>
+                <NavigationProperty Name="Model" Type="Model.ModelFile"/>
+                <NavigationProperty Name="MainTechnology" Type="Model.FETechnology"/>
+                <NavigationProperty Name="SiteMap" Type="Model.SiteMap"/>
+                <NavigationProperty Name="SelectedScreens" Type="Collection(Model.FrontendScreen)"/>
+                <NavigationProperty Name="Capabilities" Type="Collection(Model.FECapability)"/>
+                <NavigationProperty Name="Theme" Type="Model.Theme"/>
+                <NavigationProperty Name="Template" Type="Model.UITemplate"/>
+                <NavigationProperty Name="Dependency" Type="Model.BackendApp"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="PackageManagement">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityContainer Name="Container">
+                <EntitySet Name="Documents" EntityType="Model.Document"/>
+                <EntitySet Name="BackendTemplates" EntityType="Model.BackendTemplate">
+                    <NavigationPropertyBinding Path="MainTechnology" Target="BETechnologies"/>
+                    <NavigationPropertyBinding Path="Supported_Capabilities" Target="Capabilities"/>
+                    <NavigationPropertyBinding Path="Supported_Database" Target="Databases"/>
+                    <NavigationPropertyBinding Path="Generator" Target="Generators"/>
+                </EntitySet>
+                <EntitySet Name="BECapabilities" EntityType="Model.BECapability"/>
+                <EntitySet Name="Architectures" EntityType="Model.Architecture"/>
+                <EntitySet Name="Capabilities" EntityType="Model.Capability"/>
+                <EntitySet Name="Servers" EntityType="Model.Server"/>
+                <EntitySet Name="ScreenFlows" EntityType="Model.ScreenFlow">
+                    <NavigationPropertyBinding Path="Flow" Target="FrontendScreens"/>
+                </EntitySet>
+                <EntitySet Name="FETechnologies" EntityType="Model.FETechnology"/>
+                <EntitySet Name="ScreenFeatures" EntityType="Model.ScreenFeature"/>
+                <EntitySet Name="FrontendScreens" EntityType="Model.FrontendScreen">
+                    <NavigationPropertyBinding Path="Features" Target="ScreenFeatures"/>
+                    <NavigationPropertyBinding Path="ScreenshotBig" Target="Documents"/>
+                    <NavigationPropertyBinding Path="ScreenshotSmall" Target="Documents"/>
+                </EntitySet>
+                <EntitySet Name="BackendApps" EntityType="Model.BackendApp">
+                    <NavigationPropertyBinding Path="Model" Target="ModelFiles"/>
+                    <NavigationPropertyBinding Path="Database" Target="Databases"/>
+                    <NavigationPropertyBinding Path="MainTechnology" Target="BETechnologies"/>
+                    <NavigationPropertyBinding Path="Capabilities" Target="BECapabilities"/>
+                    <NavigationPropertyBinding Path="Template" Target="BackendTemplates"/>
+                </EntitySet>
+                <EntitySet Name="ReviewRequests" EntityType="Model.ReviewRequest"/>
+                <EntitySet Name="Projects" EntityType="Model.Project">
+                    <NavigationPropertyBinding Path="BackendApp" Target="BackendApps"/>
+                    <NavigationPropertyBinding Path="FrontendApp" Target="FrontendApps"/>
+                    <NavigationPropertyBinding Path="GitHubCred" Target="GitHubCreds"/>
+                </EntitySet>
+                <EntitySet Name="ModelFiles" EntityType="Model.ModelFile">
+                    <NavigationPropertyBinding Path="Industry" Target="Industries"/>
+                    <NavigationPropertyBinding Path="File" Target="Documents"/>
+                </EntitySet>
+                <EntitySet Name="Themes" EntityType="Model.Theme"/>
+                <EntitySet Name="Settings" EntityType="Model.Setting">
+                    <NavigationPropertyBinding Path="GitHubAccounts" Target="GitHubCreds"/>
+                </EntitySet>
+                <EntitySet Name="BETechnologies" EntityType="Model.BETechnology"/>
+                <EntitySet Name="UITemplates" EntityType="Model.UITemplate">
+                    <NavigationPropertyBinding Path="Theme" Target="Themes"/>
+                    <NavigationPropertyBinding Path="AllScreens" Target="FrontendScreens"/>
+                    <NavigationPropertyBinding Path="MainTechnology" Target="FETechnologies"/>
+                    <NavigationPropertyBinding Path="Supported_BETechnology" Target="BETechnologies"/>
+                    <NavigationPropertyBinding Path="Supported_Capabilities" Target="Capabilities"/>
+                    <NavigationPropertyBinding Path="Generator" Target="Generators"/>
+                </EntitySet>
+                <EntitySet Name="Generators" EntityType="Model.Generator"/>
+                <EntitySet Name="FECapabilities" EntityType="Model.FECapability"/>
+                <EntitySet Name="Industries" EntityType="Model.Industry"/>
+                <EntitySet Name="Users" EntityType="Model.User"/>
+                <EntitySet Name="SiteMaps" EntityType="Model.SiteMap">
+                    <NavigationPropertyBinding Path="Flows" Target="ScreenFlows"/>
+                </EntitySet>
+                <EntitySet Name="GitHubCreds" EntityType="Model.GitHubCreds"/>
+                <EntitySet Name="BuildTools" EntityType="Model.BuildTool"/>
+                <EntitySet Name="Databases" EntityType="Model.Database"/>
+                <EntitySet Name="FrontendApps" EntityType="Model.FrontendApp">
+                    <NavigationPropertyBinding Path="Model" Target="ModelFiles"/>
+                    <NavigationPropertyBinding Path="MainTechnology" Target="FETechnologies"/>
+                    <NavigationPropertyBinding Path="SiteMap" Target="SiteMaps"/>
+                    <NavigationPropertyBinding Path="SelectedScreens" Target="FrontendScreens"/>
+                    <NavigationPropertyBinding Path="Capabilities" Target="FECapabilities"/>
+                    <NavigationPropertyBinding Path="Theme" Target="Themes"/>
+                    <NavigationPropertyBinding Path="Template" Target="UITemplates"/>
+                    <NavigationPropertyBinding Path="Dependency" Target="BackendApps"/>
+                </EntitySet>
+                <EntitySet Name="PackageManagements" EntityType="Model.PackageManagement"/>
+            </EntityContainer>
+            <ComplexType Name="BasicDetails">
+                <Property Name="AppName" Type="Edm.String" isUnique="false"/>
+                <Property Name="AppDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="Namespace" Type="Edm.String" isUnique="false"/>
+                <Property Name="PackageManagement" Type="Edm.String" isUnique="false"/>
+                <Property Name="BuildTool" Type="Edm.String" isUnique="false"/>
+                <Property Name="Server" Type="Edm.String" isUnique="false"/>
+                <Property Name="Architecture" Type="Edm.String" isUnique="false"/>
+            </ComplexType>
+            <ComplexType Name="AdvancedDetails">
+                <Property Name="CorsStatus" Type="Edm.Boolean" isUnique="false"/>
+            </ComplexType>
+            <EnumType Name="ReviewType">
+                <Member Name="GeneralReview" Value="0"/>
+                <Member Name="VersionReview" Value="1"/>
+                <Member Name="ReleaseReview" Value="2"/>
+                <Member Name="MinorReview" Value="3"/>
+            </EnumType>
+            <EnumType Name="IndustryType">
+                <Member Name="HealthCare" Value="0"/>
+                <Member Name="Ecommerce" Value="1"/>
+                <Member Name="IT" Value="2"/>
+                <Member Name="Transport" Value="3"/>
+                <Member Name="Space" Value="4"/>
+            </EnumType>
+            <EnumType Name="ApprovalState">
+                <Member Name="Pending" Value="0"/>
+                <Member Name="ChangesRequested" Value="1"/>
+                <Member Name="Approved" Value="2"/>
+                <Member Name="InProgress" Value="3"/>
+                <Member Name="Rejected" Value="4"/>
+            </EnumType>
+            <EnumType Name="ModelType">
+                <Member Name="StarUML" Value="0"/>
+                <Member Name="EDMX" Value="1"/>
+            </EnumType>
+            <EnumType Name="ModelCreator">
+                <Member Name="Replicacia" Value="0"/>
+                <Member Name="User" Value="1"/>
+            </EnumType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

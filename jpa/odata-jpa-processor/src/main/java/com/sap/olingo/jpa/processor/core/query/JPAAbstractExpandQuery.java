@@ -82,16 +82,28 @@ public abstract class JPAAbstractExpandQuery extends JPAAbstractJoinQuery {
       throws ODataJPAModelException {
 
     if (!association.hasJoinTable()) {
-      final List<JPAPath> joinColumns = association.getRightColumnsList();
+//      final List<JPAPath> joinColumns = association.getRightColumnsList();
+//      return joinColumns.stream()
+//          .map(c -> (row.get(c
+//              .getAlias()))
+//                  .toString())
+//          .collect(joining(JPAPath.PATH_SEPARATOR));
+
+      final List<JPAOnConditionItem> joinColumns = association.getJoinColumnsList();
       return joinColumns.stream()
-          .map(c -> (row.get(c
-              .getAlias()))
-                  .toString())
-          .collect(joining(JPAPath.PATH_SEPARATOR));
+              .map(c -> (row.get(c.getRightPath()
+                      .getAlias()))
+                      .toString())
+              .collect(joining(JPAPath.PATH_SEPARATOR));
     } else {
-      final List<JPAPath> joinColumns = association.getLeftColumnsList();
+//      final List<JPAPath> joinColumns = association.getLeftColumnsList();
+//      return joinColumns.stream()
+//          .map(c -> (row.get(association.getAlias() + ALIAS_SEPARATOR + c.getAlias())).toString())
+//          .collect(joining(JPAPath.PATH_SEPARATOR));
+
+      final List<JPAOnConditionItem> joinColumns = association.getJoinColumnsList();
       return joinColumns.stream()
-          .map(c -> (row.get(association.getAlias() + ALIAS_SEPARATOR + c.getAlias())).toString())
+          .map(c -> (row.get(association.getAlias() + ALIAS_SEPARATOR + c.getLeftPath().getAlias())).toString())
           .collect(joining(JPAPath.PATH_SEPARATOR));
     }
   }

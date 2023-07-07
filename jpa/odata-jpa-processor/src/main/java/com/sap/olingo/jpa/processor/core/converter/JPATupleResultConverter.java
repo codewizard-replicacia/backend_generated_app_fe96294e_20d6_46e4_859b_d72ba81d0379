@@ -12,6 +12,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Tuple;
 import javax.persistence.TupleElement;
 
+import com.sap.olingo.jpa.metadata.core.edm.mapper.api.*;
 import org.apache.olingo.commons.api.Constants;
 import org.apache.olingo.commons.api.data.ComplexValue;
 import org.apache.olingo.commons.api.data.Entity;
@@ -26,14 +27,6 @@ import org.apache.olingo.server.api.ServiceMetadata;
 import org.apache.olingo.server.api.uri.UriHelper;
 
 import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmTransientPropertyCalculator;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAAssociationAttribute;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAAssociationPath;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAAttribute;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAElement;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAEntityType;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAPath;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAServiceDocument;
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAStructuredType;
 import com.sap.olingo.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException;
 import com.sap.olingo.jpa.processor.core.api.JPAODataRequestContextAccess;
 import com.sap.olingo.jpa.processor.core.exception.ODataJPAProcessorException;
@@ -71,6 +64,17 @@ abstract class JPATupleResultConverter implements JPAResultConverter {
       buffer.append(JPAPath.PATH_SEPARATOR);
       // TODO Tuple returns the converted value in case a @Convert(converter = annotation is given
       buffer.append(row.get(item.getAlias()));
+    }
+    buffer.deleteCharAt(0);
+    return buffer.toString();
+  }
+
+  protected String buildConcatenatedKeyNew(final Tuple row, final List<JPAOnConditionItem> leftColumns) {
+    final StringBuilder buffer = new StringBuilder();
+    for (final JPAOnConditionItem item : leftColumns) {
+      buffer.append(JPAPath.PATH_SEPARATOR);
+      // TODO Tuple returns the converted value in case a @Convert(converter = annotation is given
+      buffer.append(row.get(item.getLeftPath().getAlias()));
     }
     buffer.deleteCharAt(0);
     return buffer.toString();
@@ -281,7 +285,8 @@ abstract class JPATupleResultConverter implements JPAResultConverter {
   Integer determineCount(final JPAAssociationPath association, final Tuple parentRow, final JPAExpandResult child)
       throws ODataJPAQueryException {
     try {
-      final Long count = child.getCount(buildConcatenatedKey(parentRow, association.getLeftColumnsList()));
+//      final Long count = child.getCount(buildConcatenatedKey(parentRow, association.getLeftColumnsList()));
+      final Long count = child.getCount(buildConcatenatedKeyNew(parentRow, association.getJoinColumnsList()));
       return count != null ? count.intValue() : null;
     } catch (final ODataJPAModelException e) {
       throw new ODataJPAQueryException(ODataJPAQueryException.MessageKeys.QUERY_RESULT_CONV_ERROR,
@@ -305,8 +310,11 @@ abstract class JPATupleResultConverter implements JPAResultConverter {
     link.setRel(Constants.NS_NAVIGATION_LINK_REL + link.getTitle());
     link.setType(Constants.ENTITY_NAVIGATION_LINK_TYPE);
     try {
+//      final EntityCollection expandCollection = ((JPAConvertibleResult) child).getEntityCollection(
+//          buildConcatenatedKey(parentRow, association.getLeftColumnsList()));
+
       final EntityCollection expandCollection = ((JPAConvertibleResult) child).getEntityCollection(
-          buildConcatenatedKey(parentRow, association.getLeftColumnsList()));
+              buildConcatenatedKeyNew(parentRow, association.getJoinColumnsList()));
 
       expandCollection.setCount(determineCount(association, parentRow, child));
       if (association.getLeaf().isCollection()) {

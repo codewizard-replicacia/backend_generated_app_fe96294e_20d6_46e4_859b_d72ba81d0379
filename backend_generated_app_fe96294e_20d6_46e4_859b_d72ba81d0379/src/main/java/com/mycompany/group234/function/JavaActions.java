@@ -29,6 +29,7 @@ import com.mycompany.group234.model.Database;
 import com.mycompany.group234.model.FrontendApp;
 import com.mycompany.group234.model.PackageManagement;
 
+import com.mycompany.group234.model.jointable.FrontendAppSelectedScreens;
 
 
 
@@ -67,36 +68,28 @@ public class JavaActions implements ODataAction {
     }
 
     @EdmAction(name = "LinkFrontendAppWithFrontendScreens", isBound = true)
-    public void LinkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId") final long projectId) {
-        Project project = entityManager.find(Project.class, projectId);
-
-        if( project != null project.getProjectFrontendApp() != null ) {
-
-            FrontendApp frontendApp = entityManager.find(FrontendApp.class, project.getProjectFrontendApp());
-            LOGGER.info("FrontendApp: ", frontendApp);
-                
-            if (frontendApp != null) {
-                for(int selectedScreen : frontendApp.getSelectedScreenIds()) {
-                    LOGGER.info("SelectedScreen: ", selectedScreen);
+    public boolean LinkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId") final long projectId) {
+        try { 
+            Project project = entityManager.find(Project.class, projectId);
+            if( project != null && project.getProjectFrontendApp() != null ) {
+                FrontendApp frontendApp = entityManager.find(FrontendApp.class, project.getProjectFrontendApp());
+                LOGGER.info(frontendApp);           
+                if (frontendApp != null) {
+                    for(int selectedScreen : frontendApp.getSelectedScreenIds()) {
+                        LOGGER.info(selectedScreen);
+                        FrontendAppSelectedScreens jointable = new FrontendAppSelectedScreens();
+                        jointable.setAppId(frontendApp.getAppId());
+                        jointable.setFeScreenId(selectedScreen);
+                        entityManager.getTransaction().begin();
+                        entityManager.merge(jointable);
+                        entityManager.getTransaction().commit();
+                    }
                 }
-
-                // frontendApp.setFrontendScreens(selectedFrontendScreens);
-                // frontendAppRepository.save(frontendApp);
             }
-
-            // for(Trip trip : person.getTrips()) {
-            //     if(trip.getTripId().equals(tripId)) {
-            //         Person traveller = entityManager.find(Person.class, userName);
-            //         if(traveller != null) {
-            //             PersonTrip personTrip = new PersonTrip();
-            //             personTrip.setTripId(tripId);
-            //             personTrip.setUserName(userName);
-            //             entityManager.getTransaction().begin();
-            //             entityManager.merge(personTrip);
-            //             entityManager.getTransaction().commit();
-            //         }
-            //     }
-            // }
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Error in LinkTripWithPlanItem", e);
+            return false;
         }
     }
 	

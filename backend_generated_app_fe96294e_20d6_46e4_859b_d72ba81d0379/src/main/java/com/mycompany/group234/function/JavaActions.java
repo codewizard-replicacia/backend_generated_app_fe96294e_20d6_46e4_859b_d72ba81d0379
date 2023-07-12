@@ -68,9 +68,11 @@ public class JavaActions implements ODataAction {
 
     @EdmAction(name = "LinkFrontendAppWithFrontendScreens", isBound = true)
     public void LinkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId") final long projectId) {
-        if( projectId != null && projectId.getProjectFrontendApp() != null ) {
+        Project project = entityManager.find(Project.class, projectId);
 
-            FrontendApp frontendApp = entityManager.find(FrontendApp.class, projectId.getProjectFrontendApp());
+        if( project != null project.getProjectFrontendApp() != null ) {
+
+            FrontendApp frontendApp = entityManager.find(FrontendApp.class, project.getProjectFrontendApp());
             LOGGER.info("FrontendApp: ", frontendApp);
                 
             if (frontendApp != null) {

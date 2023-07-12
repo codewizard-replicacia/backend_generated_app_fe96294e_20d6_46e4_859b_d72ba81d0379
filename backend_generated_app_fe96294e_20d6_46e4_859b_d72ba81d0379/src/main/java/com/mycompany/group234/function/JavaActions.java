@@ -70,9 +70,10 @@ public class JavaActions implements ODataAction {
         if( projectId != null && projectId.getProjectFrontendApp() != null ) {
 
             FrontendApp frontendApp = entityManager.find(FrontendApp.class, projectId.getProjectFrontendApp());
+            LOGGER.info("FrontendApp: ", frontendApp);
                 
             if (frontendApp != null) {
-                for(int selectedScreen : frontendApp.getSelectedScreenIds) {
+                for(int selectedScreen : frontendApp.getSelectedScreenIds()) {
                     LOGGER.info("SelectedScreen: ", selectedScreen);
                 }
 

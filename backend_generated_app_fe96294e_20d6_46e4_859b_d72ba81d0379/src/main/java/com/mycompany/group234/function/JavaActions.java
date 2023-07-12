@@ -54,6 +54,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.transaction.Transactional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @Component
 public class JavaActions implements ODataAction {
     private final EntityManager entityManager;
@@ -62,7 +65,36 @@ public class JavaActions implements ODataAction {
         this.entityManager = entityManager;
     }
 
-	
+    @EdmAction(name = "LinkFrontendAppWithFrontendScreens", isBound = true)
+    public void LinkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId") final long projectId) {
+        if( projectId != null && projectId.getProjectFrontendApp() != null ) {
+
+            FrontendApp frontendApp = entityManager.find(FrontendApp.class, projectId.getProjectFrontendApp());
+                
+            if (frontendApp != null) {
+                for(int selectedScreen : frontendApp.getSelectedScreenIds) {
+                    LOGGER.info("SelectedScreen: ", selectedScreen);
+                }
+
+                // frontendApp.setFrontendScreens(selectedFrontendScreens);
+                // frontendAppRepository.save(frontendApp);
+            }
+
+            // for(Trip trip : person.getTrips()) {
+            //     if(trip.getTripId().equals(tripId)) {
+            //         Person traveller = entityManager.find(Person.class, userName);
+            //         if(traveller != null) {
+            //             PersonTrip personTrip = new PersonTrip();
+            //             personTrip.setTripId(tripId);
+            //             personTrip.setUserName(userName);
+            //             entityManager.getTransaction().begin();
+            //             entityManager.merge(personTrip);
+            //             entityManager.getTransaction().commit();
+            //         }
+            //     }
+            // }
+        }
+    }
 	
 }
   

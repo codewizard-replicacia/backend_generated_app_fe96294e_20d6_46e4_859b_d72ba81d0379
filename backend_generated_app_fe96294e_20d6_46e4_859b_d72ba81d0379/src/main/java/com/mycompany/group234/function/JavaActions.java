@@ -59,6 +59,7 @@ import org.apache.commons.logging.LogFactory;
 
 @Component
 public class JavaActions implements ODataAction {
+    private static final Log LOGGER = LogFactory.getLog(JavaActions.class);
     private final EntityManager entityManager;
 
     public JavaActions(EntityManager entityManager) {

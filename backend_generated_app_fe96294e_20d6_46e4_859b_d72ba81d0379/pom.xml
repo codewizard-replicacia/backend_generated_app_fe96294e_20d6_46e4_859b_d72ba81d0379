@@ -10,6 +10,8 @@
 		<processor.version>1.0.9-SNAPSHOT</processor.version>
 		<java.version>1.8</java.version>
         <eclipselink.version>2.7.9</eclipselink.version>
+        <log4j2.version>2.19.0</log4j2.version>
+        <skipTests>true</skipTests>
 	</properties>
 	<parent>
 		<groupId>com.mycompany.group234</groupId>
@@ -18,6 +20,16 @@
 	</parent>
 	<url>https://github.com/SAP/olingo-jpa-processor-v4</url>
 	<dependencies>
+		<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-api</artifactId>
+		<version>${log4j2.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${log4j2.version}</version>
+	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>

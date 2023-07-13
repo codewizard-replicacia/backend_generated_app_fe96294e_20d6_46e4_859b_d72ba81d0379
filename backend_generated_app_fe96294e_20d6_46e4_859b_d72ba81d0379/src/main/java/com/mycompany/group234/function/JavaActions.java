@@ -55,40 +55,44 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.transaction.Transactional;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Component
 public class JavaActions implements ODataAction {
-    private static final Log LOGGER = LogFactory.getLog(JavaActions.class);
+    private static Logger log = LogManager.getLogger(JavaActions.class);
     private final EntityManager entityManager;
 
     public JavaActions(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    @EdmAction(name = "LinkFrontendAppWithFrontendScreens", isBound = true)
-    public boolean LinkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId") final long projectId) {
+    @EdmAction(name = "LinkFrontendAppWithFrontendScreens", isBound = false)
+    public boolean linkFrontendAppWithFrontendScreens(@EdmParameter(name = "ProjectId")final long projectId) {
         try { 
             Project project = entityManager.find(Project.class, projectId);
+            log.info("Trip with TripId not found.");
+            log.info("Action Project: " + project.getProjectFrontendApp());
             if( project != null && project.getProjectFrontendApp() != null ) {
                 FrontendApp frontendApp = entityManager.find(FrontendApp.class, project.getProjectFrontendApp());
-                LOGGER.info(frontendApp);           
+                log.info(frontendApp);           
                 if (frontendApp != null) {
                     for(int selectedScreen : frontendApp.getSelectedScreenIds()) {
-                        LOGGER.info(selectedScreen);
+                        log.info(selectedScreen);
                         FrontendAppSelectedScreens jointable = new FrontendAppSelectedScreens();
                         jointable.setAppId(frontendApp.getAppId());
                         jointable.setFeScreenId(selectedScreen);
+//                        jointable.setId(1);
                         entityManager.getTransaction().begin();
                         entityManager.merge(jointable);
                         entityManager.getTransaction().commit();
                     }
                 }
+                return true;
             }
-            return true;
+            return false;
         } catch (Exception e) {
-            LOGGER.error("Error in LinkTripWithPlanItem", e);
+        	log.error("Error in LinkTripWithPlanItem", e);
             return false;
         }
     }

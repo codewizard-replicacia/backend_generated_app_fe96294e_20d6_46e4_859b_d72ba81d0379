@@ -135,14 +135,14 @@ class ControllerTest {
             .get("/generated_app/PackageManagements?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).Id", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).Id", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/PackageManagements/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -182,14 +182,13 @@ class ControllerTest {
             .get("/generated_app/Users?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).UserName", equalTo("'<<replace_with_keyFieldValue>>'"))
-            .body("value.size()", is(1));
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Users/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -229,14 +228,14 @@ class ControllerTest {
             .get("/generated_app/Servers?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).Id", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).Id", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Servers/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -276,14 +275,14 @@ class ControllerTest {
             .get("/generated_app/BETechnologies?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).BeTechId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).BeTechId", equalTo(1))
+            .body("value.size()", equalTo("1"));
     given()
             .when()
             .get("/generated_app/BETechnologies/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -323,14 +322,14 @@ class ControllerTest {
             .get("/generated_app/Documents?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).DocId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).DocId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Documents/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -370,14 +369,14 @@ class ControllerTest {
             .get("/generated_app/BackendApps?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).AppId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).AppId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/BackendApps/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -417,14 +416,14 @@ class ControllerTest {
             .get("/generated_app/Industries?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).IndustryId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).IndustryId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Industries/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -464,14 +463,14 @@ class ControllerTest {
             .get("/generated_app/ScreenFeatures?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).ScreenFeatureId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).ScreenFeatureId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/ScreenFeatures/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -511,14 +510,14 @@ class ControllerTest {
             .get("/generated_app/UITemplates?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).TemplateId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).TemplateId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/UITemplates/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -558,14 +557,14 @@ class ControllerTest {
             .get("/generated_app/SiteMaps?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).SiteMapId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).SiteMapId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/SiteMaps/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -605,14 +604,14 @@ class ControllerTest {
             .get("/generated_app/Databases?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).DbId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).DbId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Databases/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -652,14 +651,14 @@ class ControllerTest {
             .get("/generated_app/FETechnologies?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).FeTechId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).FeTechId", equalTo(1))
+            .body("value.size()", equalTo("1"));
     given()
             .when()
             .get("/generated_app/FETechnologies/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -699,14 +698,14 @@ class ControllerTest {
             .get("/generated_app/FrontendApps?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).AppId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).AppId", equalTo(1))
+            .body("value.size()", equalTo("1"));
     given()
             .when()
             .get("/generated_app/FrontendApps/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -746,14 +745,14 @@ class ControllerTest {
             .get("/generated_app/Architectures?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).Id", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).Id", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Architectures/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -793,14 +792,14 @@ class ControllerTest {
             .get("/generated_app/Capabilities?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).CapabilityId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).CapabilityId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Capabilities/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -840,14 +839,14 @@ class ControllerTest {
             .get("/generated_app/FECapabilities?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).CapabilityId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).CapabilityId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/FECapabilities/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -887,14 +886,14 @@ class ControllerTest {
             .get("/generated_app/Settings?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).SettingsId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).SettingsId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Settings/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -934,14 +933,14 @@ class ControllerTest {
             .get("/generated_app/BackendTemplates?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).TemplateId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).TemplateId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/BackendTemplates/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -981,14 +980,14 @@ class ControllerTest {
             .get("/generated_app/ScreenFlows?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).ScreenFlowId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).ScreenFlowId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/ScreenFlows/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1028,14 +1027,14 @@ class ControllerTest {
             .get("/generated_app/Projects?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).ProjectId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).ProjectId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Projects/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1075,14 +1074,14 @@ class ControllerTest {
             .get("/generated_app/FrontendScreens?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).FeScreenId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).FeScreenId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/FrontendScreens/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1122,14 +1121,14 @@ class ControllerTest {
             .get("/generated_app/ModelFiles?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).ModelId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).ModelId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/ModelFiles/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1169,14 +1168,14 @@ class ControllerTest {
             .get("/generated_app/BuildTools?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).Id", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).Id", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/BuildTools/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1216,14 +1215,14 @@ class ControllerTest {
             .get("/generated_app/BECapabilities?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).CapabilityId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).CapabilityId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/BECapabilities/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1263,14 +1262,14 @@ class ControllerTest {
             .get("/generated_app/Themes?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).ThemeId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).ThemeId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Themes/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1310,14 +1309,14 @@ class ControllerTest {
             .get("/generated_app/ReviewRequests?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).Id", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).Id", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/ReviewRequests/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1357,14 +1356,14 @@ class ControllerTest {
             .get("/generated_app/Generators?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).GenId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).GenId", equalTo(2))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/Generators/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1404,14 +1403,14 @@ class ControllerTest {
             .get("/generated_app/GitHubCreds?$top=1")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body("value.get(0).GitHubCredId", equalTo("<<replace_with_keyFieldValue>>"))
-            .body("value.size()", is(1));
+            .body("value.get(0).GitHubCredId", equalTo(1))
+            .body("value.size()", equalTo(1));
     given()
             .when()
             .get("/generated_app/GitHubCreds/$count")
             .then()
             .statusCode(HttpStatusCode.fromStatusCode(200).getStatusCode())
-            .body(is("1"));
+            .body(equalTo("1"));
             
             
     
@@ -1426,48 +1425,48 @@ class ControllerTest {
  
   @AfterEach
   void  teardown() {
-    jdbcTemplate.execute("DELETE FROM generated_app.PackageManagement");
-    jdbcTemplate.execute("DELETE FROM generated_app.User");
-    jdbcTemplate.execute("DELETE FROM generated_app.Server");
-    jdbcTemplate.execute("DELETE FROM generated_app.BETechnology");
-    jdbcTemplate.execute("DELETE FROM generated_app.Document");
-    jdbcTemplate.execute("DELETE FROM generated_app.BackendApp");
-    jdbcTemplate.execute("DELETE FROM generated_app.Industry");
-    jdbcTemplate.execute("DELETE FROM generated_app.ScreenFeature");
-    jdbcTemplate.execute("DELETE FROM generated_app.UITemplate");
-    jdbcTemplate.execute("DELETE FROM generated_app.SiteMap");
-    jdbcTemplate.execute("DELETE FROM generated_app.Database");
-    jdbcTemplate.execute("DELETE FROM generated_app.FETechnology");
-    jdbcTemplate.execute("DELETE FROM generated_app.FrontendApp");
-    jdbcTemplate.execute("DELETE FROM generated_app.Architecture");
-    jdbcTemplate.execute("DELETE FROM generated_app.Capability");
-    jdbcTemplate.execute("DELETE FROM generated_app.FECapability");
-    jdbcTemplate.execute("DELETE FROM generated_app.Setting");
-    jdbcTemplate.execute("DELETE FROM generated_app.BackendTemplate");
-    jdbcTemplate.execute("DELETE FROM generated_app.ScreenFlow");
-    jdbcTemplate.execute("DELETE FROM generated_app.Project");
-    jdbcTemplate.execute("DELETE FROM generated_app.FrontendScreen");
-    jdbcTemplate.execute("DELETE FROM generated_app.ModelFile");
-    jdbcTemplate.execute("DELETE FROM generated_app.BuildTool");
-    jdbcTemplate.execute("DELETE FROM generated_app.BECapability");
-    jdbcTemplate.execute("DELETE FROM generated_app.Theme");
-    jdbcTemplate.execute("DELETE FROM generated_app.ReviewRequest");
-    jdbcTemplate.execute("DELETE FROM generated_app.Generator");
-    jdbcTemplate.execute("DELETE FROM generated_app.GitHubCreds");
-     jdbcTemplate.execute("DELETE FROM generated_app.FrontendAppCapabilities");
-     jdbcTemplate.execute("DELETE FROM generated_app.FrontendAppSelectedScreens");
-     jdbcTemplate.execute("DELETE FROM generated_app.BETechnologyBeTechnologyFeatures");
-     jdbcTemplate.execute("DELETE FROM generated_app.FrontendAppMetaTags");
-     jdbcTemplate.execute("DELETE FROM generated_app.UITemplateSupported_Capabilities");
-     jdbcTemplate.execute("DELETE FROM generated_app.BackendAppCapabilities");
-     jdbcTemplate.execute("DELETE FROM generated_app.FETechnologyFeTechnologyFeatures");
-     jdbcTemplate.execute("DELETE FROM generated_app.SettingGitHubAccounts");
-     jdbcTemplate.execute("DELETE FROM generated_app.UITemplateAllScreens");
-     jdbcTemplate.execute("DELETE FROM generated_app.FrontendAppSelectedScreenIds");
-     jdbcTemplate.execute("DELETE FROM generated_app.BackendTemplateSupported_Capabilities");
-     jdbcTemplate.execute("DELETE FROM generated_app.ScreenFlowFlow");
-     jdbcTemplate.execute("DELETE FROM generated_app.SiteMapFlows");
-     jdbcTemplate.execute("DELETE FROM generated_app.FrontendScreenFeatures");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"PackageManagement\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"User\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Server\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"BETechnology\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Document\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"BackendApp\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Industry\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"ScreenFeature\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"UITemplate\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"SiteMap\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Database\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"FETechnology\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendApp\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Architecture\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Capability\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"FECapability\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Setting\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"BackendTemplate\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"ScreenFlow\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Project\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendScreen\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"ModelFile\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"BuildTool\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"BECapability\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Theme\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"ReviewRequest\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"Generator\"");
+    jdbcTemplate.execute("DELETE FROM generated_app.\"GitHubCreds\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendAppCapabilities\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendAppSelectedScreens\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"BETechnologyBeTechnologyFeatures\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendAppMetaTags\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"UITemplateSupported_Capabilities\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"BackendAppCapabilities\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FETechnologyFeTechnologyFeatures\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"SettingGitHubAccounts\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"UITemplateAllScreens\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendAppSelectedScreenIds\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"BackendTemplateSupported_Capabilities\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"ScreenFlowFlow\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"SiteMapFlows\"");
+     jdbcTemplate.execute("DELETE FROM generated_app.\"FrontendScreenFeatures\"");
 
     RestAssuredMockMvc.reset();
   }

@@ -1,2 +1,10 @@
-
-        {"BeTechId":67,"TechName":"Ramesh Naik","Description":"slide","Icon":"nurse","Version":"harm","BeTechnologyFeatures":["notice"]}
+{
+    "BeTechId": 67,
+    "TechName": "Ramesh Naik",
+    "Description": "slide",
+    "Icon": "nurse",
+    "Version": "harm",
+    "BeTechnologyFeatures": [
+        "notice"
+    ]
+}
